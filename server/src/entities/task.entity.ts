@@ -25,10 +25,10 @@ export class Task {
   description: string;
 
   @Column({ nullable: false })
-  startDate: Date;
+  startDate: string;
 
   @Column({ nullable: false })
-  endDate: Date;
+  endDate: string;
 
   @Column(
     { type: 'enum',

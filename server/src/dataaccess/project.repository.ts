@@ -5,7 +5,11 @@ import { IProject } from '../utils/types';
 export const ProjectRepository = AppDataSource.getRepository(Project).extend({
 
   async GetAllProjects() {
-    const projectsList = await this.find();
+    const projectsList = await this.find({
+      relations: {
+        projectManagers: true,
+      }
+    });
     return projectsList;
   },
 

@@ -73,5 +73,5 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts", "newrelic.ts"]
+  "include": ["./src/**/*.ts", "newrelic.ts", "../1709813183882-addTitleInTask.ts"]
 }

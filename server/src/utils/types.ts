@@ -11,6 +11,8 @@ export type Route = {
 export interface IProject {
   name: string;
   tasks: [any];
+  startDate: string;
+  endDate: string;
   projectManagers: [any];
 }
 
