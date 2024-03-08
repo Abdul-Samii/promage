@@ -21,6 +21,16 @@ const defaultProjectsContext: IProjectsContext = {
       createdAt: '',
       updatedAt: '',
     }],
+    tasks: [{
+      title: '',
+      description: '',
+      startDate: '',
+      endDate: '',
+      id: 0,
+      status: '',
+      createdAt: '',
+      updatedAt: '',
+    }],
     startDate: '',
     endDate: '',
     createdAt: '',
@@ -34,6 +44,7 @@ const defaultProjectsContext: IProjectsContext = {
   },
   setPagination: () => {},
   resetPagination: () => {},
+  getProjects: () => {},
 };
 export const ProjectsContext = createContext<IProjectsContext>(
   defaultProjectsContext
@@ -70,6 +81,7 @@ const ProjectsContextContainer: FC<Props> = (props) => {
         pagination,
         setPagination,
         resetPagination,
+        getProjects,
       }}
     >
       {props.children}

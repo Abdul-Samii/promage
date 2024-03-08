@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { createProject } from "../../services/apiCalls";
+import { ProjectsContext } from "../../contexts/ProjectsContext";
 
 const CreateProjectForm = ({ submitData, closeModal }: any) => {
   const [projectName, setProjectName] = useState('');
@@ -10,8 +11,9 @@ const CreateProjectForm = ({ submitData, closeModal }: any) => {
   const handleStartDateChange = (e: ChangeEvent<HTMLInputElement>) => setStartDate(e.target.value);
   const handleEndDateChange = (e: ChangeEvent<HTMLInputElement>) => setEndDate(e.target.value);
 
+  const { getProjects } = useContext(ProjectsContext);
+
   const handleSubmit = async () => {
-    // Perform validation
     if (projectName.length < 3 || !startDate || !endDate) {
       alert('Please fill in all fields and ensure the project name is at least 3 characters.');
       return;
@@ -30,12 +32,6 @@ const CreateProjectForm = ({ submitData, closeModal }: any) => {
       return;
     }
 
-    // submitData({
-    //   projectName,
-    //   startDate,
-    //   endDate,
-    // });
-
     const obj = {
       name: projectName,
       startDate,
@@ -47,6 +43,7 @@ const CreateProjectForm = ({ submitData, closeModal }: any) => {
     setProjectName('');
     setStartDate('');
     setEndDate('');
+    getProjects();
     closeModal();
   };
 

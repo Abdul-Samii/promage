@@ -4,12 +4,14 @@ import Modal from "react-modal";
 import ModalHeader from "./ModalHeader";
 import CreateProjectForm from "./CreateProjectFields";
 import { IProjectModal } from "../../utils";
+import CreateTaskForm from "./CreateTaskFields";
 
 
 const FormModal = ({
   isOpen,
   closeModal,
   title,
+  projectId = 0,
 }: IProjectModal) => {
   const initialFormValues = {
     title: "",
@@ -53,7 +55,12 @@ const FormModal = ({
           closeModal={closeModal}
         />
         <div className="space-y-4">
-          <CreateProjectForm submitData={submitData} closeModal={closeModal} />
+          {
+            title === 'Create Task' ?
+              <CreateTaskForm closeModal={closeModal} projectId={projectId} />
+            :
+            <CreateProjectForm submitData={submitData} closeModal={closeModal} />
+          }
           {/* <div className="flex justify-between">
             <button
               type="submit"
