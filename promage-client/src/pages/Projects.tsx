@@ -23,7 +23,7 @@ const Projects = () => {
           New Project
         </button>
       </div>
-      <Table projects={projects} />
+      <Table projects={projects} type='projects' />
     </div>
   )
 }
