@@ -1,9 +1,9 @@
 import React, {
-  useEffect,
   useState,
   createContext,
   FC,
   ReactNode,
+  useEffect,
 } from 'react';
 
 import { getAllProjectTasks } from '../services/apiCalls';

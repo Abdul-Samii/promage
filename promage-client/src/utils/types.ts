@@ -73,4 +73,5 @@ export interface IProjectModal {
   closeModal: () => void;
   title: string;
   projectId?: number;
+  projectManagerId?: number;
 }

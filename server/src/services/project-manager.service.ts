@@ -1,6 +1,7 @@
 import { ProjectManagerRepository } from '../dataaccess/project-manager.repository';
 import { ProjectRepository } from '../dataaccess/project.repository';
 import { IProjectManager } from '../utils/types';
+import { Send } from '../sockets/websockets';
 
 export class ProjectManagersService {
   
@@ -14,6 +15,14 @@ export class ProjectManagersService {
       }
       return await ProjectManagerRepository.CreateProjectManager(newProjectManager)
     } catch (error: any) {
+      return { success: false, message: error instanceof Error ? error.message : String(error) };
+    }
+  }
+
+  async GetAllManagers() {
+    try {
+      return await ProjectManagerRepository.find();
+    } catch(error: any) {
       return { success: false, message: error instanceof Error ? error.message : String(error) };
     }
   }

@@ -4,8 +4,8 @@ import { ITask } from '../utils/types';
 
 export const TaskRepository = AppDataSource.getRepository(Task).extend({
 
-  async GetAllProjectTasks() {
-    const taskList = await this.find();
+  async GetAll() {
+    const taskList = await this.find()
     return taskList;
   },
 

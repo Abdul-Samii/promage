@@ -16,6 +16,11 @@ export class ProjectManagersController {
     const assignedProject = this.projectManagersService.AssignProject(projectId, projectManagerId);
     return assignedProject;
   }
+
+  async GetAllManagers(request: Request, response: Response) {
+    const allProjects = this.projectManagersService.GetAllManagers()
+    return allProjects;
+  }
 }
 
 export default ProjectManagersController;

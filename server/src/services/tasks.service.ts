@@ -3,9 +3,12 @@ import { ITask } from '../utils/types';
 
 export class TasksService {
 
-  async GetAllProjectTasks() {
+  async GetAllProjectTasks(projectId: number) {
     try {
-      return await TaskRepository.GetAllProjectTasks()
+      return await TaskRepository.find({
+        where: { project: { id: projectId } },
+        relations: { projectManager: true, project: true, },
+      })
     } catch(error: any) {
       return { success: false, message: error instanceof Error ? error.message : String(error) };
     }

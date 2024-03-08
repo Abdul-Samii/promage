@@ -6,7 +6,8 @@ export class TasksController {
   private readonly taskService = new TasksService();
 
   async GetAllProjectTasks(request: Request, response: Response) {
-    const allProjectTasks = this.taskService.GetAllProjectTasks();
+    const projectId = request.params.id;
+    const allProjectTasks = this.taskService.GetAllProjectTasks(+projectId);
     return allProjectTasks;
   }
 

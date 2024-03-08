@@ -8,6 +8,7 @@ export const ProjectRepository = AppDataSource.getRepository(Project).extend({
     const projectsList = await this.find({
       relations: {
         projectManagers: true,
+        tasks: true,
       }
     });
     return projectsList;

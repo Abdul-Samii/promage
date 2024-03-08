@@ -38,6 +38,19 @@ export const createProject = async (data: { name: string, startDate: string, end
   }
 };
 
+export const AssignProject = async (data: { projectId: number, projectManagerId: number}) => {
+  try {
+    const response = await axios({
+      method: 'PATCH',
+      url: 'api/project-managers',
+      data: { newProject: data },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const getAllProjectTasks = async (projectId: number) => {
   try {
     const response = await axios({

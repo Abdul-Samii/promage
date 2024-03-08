@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import { createProject } from "../../services/apiCalls";
 import { ProjectsContext } from "../../contexts/ProjectsContext";
 
-const CreateProjectForm = ({ submitData, closeModal }: any) => {
+const CreateProjectForm = ({ closeModal }: any) => {
   const [projectName, setProjectName] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -39,7 +39,6 @@ const CreateProjectForm = ({ submitData, closeModal }: any) => {
     }
     await createProject(obj);
 
-    // Reset the form state
     setProjectName('');
     setStartDate('');
     setEndDate('');

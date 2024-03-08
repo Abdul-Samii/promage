@@ -10,6 +10,7 @@ import logger from './config/logger';
 import { Routes } from './routes';
 import { requestLogger } from './middlewares';
 import { runMigrations } from './utils/run-migrations';
+import { initializeWebSocket } from './sockets/websockets';
 
 
 AppDataSource.initialize()

@@ -3,7 +3,7 @@ import { createTask } from '../../services/apiCalls';
 import { ProjectManagersContext } from '../../contexts/ProjectManagersContext';
 import { TasksContext } from '../../contexts/TasksContext';
 
-const CreateTaskForm = ({ submitData, closeModal, projectId = 0 }: any) => {
+const CreateTaskForm = ({ closeModal, projectId = 0 }: any) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [projectManager, setProjectManager] = useState(0);
@@ -19,7 +19,6 @@ const CreateTaskForm = ({ submitData, closeModal, projectId = 0 }: any) => {
   const handleEndDateChange = (e: ChangeEvent<HTMLInputElement>) => setEndDate(e.target.value);
 
   const handleSubmit = async () => {
-    // Perform validation
     if (title.length < 3 || !startDate || !endDate) {
       alert('Please fill in all fields and ensure the project name is at least 3 characters.');
       return;

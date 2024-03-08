@@ -1,10 +1,11 @@
-import React, { FormEvent, useState } from "react";
-import Modal from "react-modal";
+import React from 'react';
+import Modal from 'react-modal';
 
-import ModalHeader from "./ModalHeader";
-import CreateProjectForm from "./CreateProjectFields";
-import { IProjectModal } from "../../utils";
-import CreateTaskForm from "./CreateTaskFields";
+import ModalHeader from './ModalHeader';
+import CreateProjectForm from './CreateProjectFields';
+import { IProjectModal } from '../../utils';
+import CreateTaskForm from './CreateTaskFields';
+import AssignProjectForm from './AssignProjectFields';
 
 
 const FormModal = ({
@@ -12,11 +13,8 @@ const FormModal = ({
   closeModal,
   title,
   projectId = 0,
+  projectManagerId = 0,
 }: IProjectModal) => {
-  const initialFormValues = {
-    title: "",
-  };
-  
 
   const fileNameModalCustomStyles = {
     content: {
@@ -33,15 +31,6 @@ const FormModal = ({
     },
   };
 
-  const submitData = async (e: FormEvent) => {
-    alert("here")
-    e.preventDefault();
-    
-    closeModal();
-  };
-  
-  
-
   return (
     <Modal
       isOpen={isOpen}
@@ -55,31 +44,9 @@ const FormModal = ({
           closeModal={closeModal}
         />
         <div className="space-y-4">
-          {
-            title === 'Create Task' ?
-              <CreateTaskForm closeModal={closeModal} projectId={projectId} />
-            :
-            <CreateProjectForm submitData={submitData} closeModal={closeModal} />
-          }
-          {/* <div className="flex justify-between">
-            <button
-              type="submit"
-              onClick={closeModal}
-              title="Cancel"
-              className="text-white bg-gray-500 hover:bg-gray-600 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              onClick={submitData}
-              title="Validate"
-              className='text-white bg-gray-700
-              font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-secondary_bg_color'
-            >
-              Submit
-            </button>
-          </div> */}
+          {title === 'Create Task' && <CreateTaskForm closeModal={closeModal} projectId={projectId}/>}
+          {title === 'Create Project' && <CreateProjectForm closeModal={closeModal} />}
+          {title === 'Assign Project' && <AssignProjectForm closeModal={closeModal} projectId={projectId} projectManagerId={projectManagerId} />}
         </div>
       </div>
     </Modal>

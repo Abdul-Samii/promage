@@ -1,4 +1,5 @@
 import ProjectManagersController from '../controllers/project-managers.controller';
+import { SendEvents } from '../middlewares/SendEvents';
 import type { Route } from '../utils/types';
 
 export const ProjectManagersRoutes: Array<Route> = [
@@ -10,9 +11,16 @@ export const ProjectManagersRoutes: Array<Route> = [
     action: 'CreateProjectManager',
   },
   {
+    method: 'get',
+    route: '/api/project-managers',
+    middlewares: [SendEvents],
+    controller: ProjectManagersController,
+    action: 'GetAllManagers',
+  },
+  {
     method: 'patch',
     route: '/api/project-managers',
-    middlewares: [],
+    middlewares: [SendEvents],
     controller: ProjectManagersController,
     action: 'AssignProject',
   },

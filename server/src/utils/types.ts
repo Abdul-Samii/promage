@@ -10,7 +10,7 @@ export type Route = {
 
 export interface IProject {
   name: string;
-  tasks: [any];
+  tasks: [ITask];
   startDate: string;
   endDate: string;
   projectManagers: [any];
